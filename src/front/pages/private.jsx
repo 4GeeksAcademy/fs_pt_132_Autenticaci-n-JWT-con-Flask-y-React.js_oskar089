@@ -13,7 +13,7 @@ export const Private = () => {
         }
     }, [store.token, navigate]);
 
-    // Si por un segundo el estado está vacío mientras redirige, mostramos un loading
+    // Si estado está vacío mientras redirige, mostramos un loading
     if (!store.token) return (
         <div className="container mt-5 text-center">
             <div className="spinner-border text-primary" role="status">
