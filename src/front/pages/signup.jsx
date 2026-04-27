@@ -10,19 +10,20 @@ export const Signup = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         setError(null);
-
+        console.log("Antes de response")
         const response = await fetch(import.meta.env.VITE_BACKEND_URL + "/api/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
         });
-
+        console.log("antes del if")
+        console.log(response)
         if (response.ok) {
-            return jsonify({"msg": "Usuario creado con éxito. Ahora puedes loguearte."}), 200,
+            alert("Usuario creado con éxito. Ahora puedes loguearte.");
             navigate("/login"); // Tras el registro, lo mandamos al login
         } else {
             const data = await response.json();
-            setError(data.message || "Error al registrar usuario");
+            setError(data.msg || "Error al registrar usuario");
         }
     };
 
