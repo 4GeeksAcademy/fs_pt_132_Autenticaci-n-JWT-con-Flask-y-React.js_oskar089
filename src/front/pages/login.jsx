@@ -18,8 +18,8 @@ export const Login = () => {
 
         if (response.ok) {
             const data = await response.json();
-            dispatch({ type: "login", payload: data }); 
-            navigate("/private"); 
+            dispatch({ type: "login", payload: data });
+            navigate("/private");
         } else {
             alert("Error en el login");
         }
@@ -30,6 +30,9 @@ export const Login = () => {
             <input type="text" className="form-control mb-2" placeholder="Username" onChange={e => setUsername(e.target.value)} />
             <input type="password" className="form-control mb-2" placeholder="Password" onChange={e => setPassword(e.target.value)} />
             <button className="btn btn-success">Login</button>
+            <div className="mt-3 text-center">
+                <p>¿No tienes cuenta? <span className="text-primary" style={{ cursor: 'pointer' }} onClick={() => navigate("/signup")}>Regístrate aquí</span></p>
+            </div>
         </form>
     );
 };
